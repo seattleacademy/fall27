@@ -5,8 +5,13 @@ var http = require('http');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-app.use(bodyParser.text({type:"*/*"}));
+app.use(bodyParser.text({ type: "*/*" }));
 
+var PythonShell = require('python-shell');
+
+PythonShell.run('helloworld.py', function(err, results) {
+    if (err) throw err;
+});
 var robotData = {};
 robotData.counter = 0;
 robotData.timestamp = Date.now();
@@ -61,7 +66,19 @@ app.all('/robotsensors', function(req, res) {
 
 // });
 
-port = 4001;
+app.all('/led', function(req, res) {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    console.log(req.body);
+    console.log(JSON.parse(req.body));
+    command = JSON.parse(req.body);
+    // console.log(JSON.stringify(sensors, null, 4));
+    PythonShell.run(command.filename, function(err, results) {
+        if (err) throw err;
+    });
+
+});
+
+port = 1030;
 var sensors = {};
 counter = 0;
 app.use(express.static(__dirname + '/public'));

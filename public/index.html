@@ -15,6 +15,7 @@
         <button class="drive" data-command='{"left":100,"right":-100}'>ccw</button>
         <button class="drive" data-command='{"left":50,"right":100}'>ne</button>
         <button class="drive" data-command='{"left":100,"right":50}'>nw</button>
+        <button class="led" data-command='{"filename":"helloworld.py"}'>led-a</button>
     </div>
     <div>
         <canvas id="canvasCompass" width="201" height="201"></canvas>
@@ -147,7 +148,13 @@
             right: command.right
         }));
     });
-    $("#forward").click(function() {
+
+    $(".led").click(function(e) {
+        command = $(this).data('command');
+        $.post("/led", JSON.stringify({
+            filename:command.filename
+        }));
+    });    $("#forward").click(function() {
         console.log(JSON.stringify({
             left: 20,
             right: 30
