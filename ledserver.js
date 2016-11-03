@@ -44,7 +44,7 @@ app.all('/led', function(req, res) {
 
 });
 
-port = 1030;
+port = 5030;
 var sensors = {};
 counter = 0;
 app.use(express.static(__dirname + '/public'));

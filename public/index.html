@@ -42,13 +42,13 @@
         horizon.setPitch(pitch);
         horizon.setRoll(roll);
         compass.setValue(yaw);
-        voltage.setValue(data.battery)
-        vL.setValue(data.vL)
-        vR.setValue(data.vR)
-        cliff_left.setValue(data.cliff_left)
-        cliff_front_left.setValue(data.cliff_front_left)
-        cliff_front_right.setValue(data.cliff_front_right)
-        cliff_right.setValue(data.cliff_right)
+        // voltage.setValue(data.battery)
+        // vL.setValue(data.vL)
+        // vR.setValue(data.vR)
+        // cliff_left.setValue(data.cliff_left)
+        // cliff_front_left.setValue(data.cliff_front_left)
+        // cliff_front_right.setValue(data.cliff_front_right)
+        // cliff_right.setValue(data.cliff_right)
     }
 
 
@@ -143,6 +143,17 @@
                 right: oldRight
             }));
         }
+
+        if (key == 40) {
+            currrentPosition = "d";
+            console.log("downarrow", currrentPosition);
+        $.post("/led", JSON.stringify({
+            filename: "arrowdown.py"
+        }));
+        }
+
+
+
         if (key == 83) {
             oldRight -= 50;
             oldLeft -= 50;
