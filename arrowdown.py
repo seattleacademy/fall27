@@ -5,12 +5,12 @@ O = [255, 255, 255]  # White
 
 down_arrow = [
 O, O, O, X, X, O, O, O,
-O, O, X, X, X, X, O, O,
+O, O, O, X, X, O, O, O,
+O, O, O, X, X, O, O, O,
+O, O, O, X, X, O, O, O,
+O, O, O, X, X, O, O, O,
 O, X, X, X, X, X, X, O,
-O, O, O, X, X, O, O, O,
-O, O, O, X, X, O, O, O,
-O, O, O, X, X, O, O, O,
-O, O, O, X, X, O, O, O,
+O, O, X, X, X, X, O, O,
 O, O, O, X, X, O, O, O
 ]
 

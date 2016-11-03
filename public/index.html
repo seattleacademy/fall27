@@ -147,12 +147,18 @@
         if (key == 40) {
             currrentPosition = "d";
             console.log("downarrow", currrentPosition);
-        $.post("/led", JSON.stringify({
-            filename: "arrowdown.py"
-        }));
+            $.post("/led", JSON.stringify({
+                filename: "arrowdown.py"
+            }));
         }
 
-
+        if (key == 38) {
+            currrentPosition = "u";
+            console.log("downarrow", currrentPosition);
+            $.post("/led", JSON.stringify({
+                filename: "arrowup.py"
+            }));
+        }
 
         if (key == 83) {
             oldRight -= 50;
