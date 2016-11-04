@@ -21,6 +21,8 @@
     </div>
     <div id="rightSpeed">0</div>
     <div id="leftSpeed">0</div>
+    <div id="pitch">0</div>
+    <div id="updown">0</div>
     <script src='jquery-2.2.4.min.js'></script>
     <script src='gauges.js'></script>
     <script>
@@ -31,6 +33,8 @@
     var latestDate = {};
 
     function updateGuages(data) {
+        var pitch = 0;
+        var updown = 0;
         //console.log(JSON.stringify(data, null, 4));
         latestData = data;
 
@@ -42,6 +46,22 @@
         horizon.setPitch(pitch);
         horizon.setRoll(roll);
         compass.setValue(yaw);
+        $("#pitch").text(pitch);
+        updown = $("#updown").text();
+        //console.log('updown pitch',updown,pitch)
+        if(pitch > 0 && updown < 1){
+            $("#updown").text(1);
+            $.post("/led", JSON.stringify({
+                filename: "arrowup.py"
+            }));
+        }
+        if(pitch < 0 && updown > -1){
+            $("#updown").text(-1);
+            $.post("/led", JSON.stringify({
+                filename: "arrowdown.py"
+            }));
+        }
+        //console.log("pitch",pitch);
         // voltage.setValue(data.battery)
         // vL.setValue(data.vL)
         // vR.setValue(data.vR)

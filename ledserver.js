@@ -84,7 +84,7 @@ var wss = new WebSocketServer({ server: server });
 wss.on('connection', function(ws) {
     var id = setInterval(function() {
         ws.send(JSON.stringify(sensors), function() { /* ignore errors */ });
-    }, 25);
+    }, 200);
     console.log('connection to client');
     ws.on('close', function() {
         console.log('closing client');
